@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="America/Sao_Paulo">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}{% endblock %}</title>
+
+
+  {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'base.css' %}">
+  {% block extra_css %}{% endblock %}
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        {% if not user.is_authenticated %}
+        <li><a href="{% url 'register' %}">Cadastre-se</a> </li>
+        {% endif %}
+
+        <li><a href="{% url 'cars_list' %}">Carros</a> </li>
+
+        {% if user.is_authenticated %}
+        <li><a href="{% url 'new_car' %}">Cadastrar Carro</a> </li>
+        {% endif %}
+      </ul>
+
+
+      <ul class="right-align">
+        {% if not user.is_authenticated %}
+        <li><a href="{% url 'login' %}">Login</a> </li>
+        {% endif %}
+
+        {% if user.is_authenticated %}
+        <li>Olá, {{ user.username }} </li>
+        <li><a href="{% url 'logout' %}">Sair</a> </li>  
+        {% endif %}        
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    {% block content %}
+    {% endblock %}
+  </main>
+
+  <footer>
+    <p>&copy; 2024 JG Imports</p>
+  </footer>
+</body>
+</html>
