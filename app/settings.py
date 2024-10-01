@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'cars',
     'accounts',
+    'gemini_api'
 ]
 
 MIDDLEWARE = [

@@ -17,5 +17,5 @@ class CarModelForm(forms.ModelForm):
     def clean_factory_year(self):
         factory_year = self.cleaned_data.get('factory_year')
         if factory_year < 2017:
-           self.add_error('factory_year', 'Não é possível cadastrar carros fabricados antes de 2017')
+            self.add_error('factory_year', 'Não é possível cadastrar carros fabricados antes de 2017')
         return factory_year
